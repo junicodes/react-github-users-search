@@ -2,9 +2,9 @@ import { toast, ToastPosition, ToastOptions } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 interface ToastNotifyProps {
-    type: string,
-    message: string,
-    position: ToastPosition
+    type?: string,
+    message?: string,
+    position?: ToastPosition
 }
 
 export function ToastNotify({type = "default", message = "Welcome", position = "top-right"}: ToastNotifyProps) {

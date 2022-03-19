@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { removeLoadingState} from "../../../helpers/supportFunctions";
 import { GET_USER_LIST_DATA_ASYNC_ACTION } from "../actions/userList";
-import { ToastNotify } from "../../../helpers/toastNotify"
+// import { ToastNotify } from "../../../helpers/toastNotify"
 import { RootState } from "../store";
 
 
 export interface UserListPayloadState {
   total_count: number,
   incomplete_results: boolean,
-  items: object[]
+  items: object[] | null
 }
 
 export interface UserListState {
@@ -20,7 +20,7 @@ export interface UserListState {
 export const userListDefaultPayload = {
   total_count: 0,
   incomplete_results: false,
-  items: []
+  items: null
 }
 
 const initialState = {
@@ -44,18 +44,15 @@ export const userListSlice = createSlice({
   },
 
   extraReducers: (builder) => {
-
-    builder.addCase(GET_USER_LIST_DATA_ASYNC_ACTION.pending, (state) => {
-      state.loading.push('GET_USER_LIST_DATA');
-    }),
-    builder.addCase(GET_USER_LIST_DATA_ASYNC_ACTION.fulfilled, (state, action) => {
-      state.loading = removeLoadingState(state.loading, 'GET_USER_LIST_DATA')
-    //   if(action.payload && action.payload.status) {
-    //     state.user = action.payload.data;
-    //     state.boot = true;
-    //     addAuthToDevice(action.payload);
-    //   }
+    builder
+    .addCase(GET_USER_LIST_DATA_ASYNC_ACTION.pending, (state) => {
+      state.loading = ['GET_USER_LIST_DATA'];
     })
+    .addCase(GET_USER_LIST_DATA_ASYNC_ACTION.fulfilled, (state, action) => {
+      state.loading = removeLoadingState(state.loading, 'GET_USER_LIST_DATA')
+      // console.log(action, "action")
+      if(action.payload) state.userList = action.payload;
+    });
   }
 
 });

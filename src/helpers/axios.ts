@@ -1,18 +1,35 @@
+import axios, { Method, AxiosRequestHeaders } from "axios";
+import { origin } from "./routes";
+import axiosStatus from "./axiosStatus";
+import { ToastNotify } from "./toastNotify";
 
-import React from 'react';
+export const axiosWrapper = async (
+    method: Method | undefined,
+    route: string,
+    header?: AxiosRequestHeaders | undefined,
+    body?: object[] | null | undefined
+): Promise<any> => {
 
-const axiosWarraper = (method: string, routes: string, status: number, body=null) => {
+    let response: any = null;
 
-    // return {
-    //     status: status,
-    //     data: {
-    //         username: "max",
-    //         token: '76899292'
-    //     }
-    // }
+    try {
+        if(method === 'get') response = await axios.get(`${origin}${route}`);
+        if(method === 'post' && body) response = await axios.post(`${origin}${route}`, body);
+        if(method === 'put' && body) response = await axios.put(`${origin}${route}`);
+        if(method === 'delete' && body) response = await axios.delete(`${origin}${route}`);
+        
+        const res = axiosStatus(response);
 
-    return;
+        if(res === 200 || res === 201) { return response.data; } 
+        return { status: res, data: null };
+        
+    } catch (error) {
 
-}
-
-export default axiosWarraper;
+        ToastNotify({
+            type: "error", 
+            message: `An unexpected error occured, please referesh and try again`,
+            position: "top-center"
+        })
+        return { status: null, data: null };
+    }
+};

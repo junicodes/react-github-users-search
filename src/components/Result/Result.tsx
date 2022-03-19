@@ -4,14 +4,26 @@ import { useAppSelector, useAppDispatch } from '../../hooks/reduxhook'
 import { 
     selectUserList,
     resetUserList,
-    setUserList
+    setUserList,
+    UserListState
  } from "../../react-wrapper/redux/slices/userListSlice";
- import { FaArrowDown } from "@react-icons/all-files/fa/FaArrowDown";
+import { FaArrowDown } from "@react-icons/all-files/fa/FaArrowDown";
+import { getLoadingState } from "../../helpers/supportFunctions";
+
 
 const Result = () => {
+
+    //Hooks
+    const userList = useAppSelector<UserListState>(selectUserList);
+    const dispatch = useAppDispatch();
+
+    console.log(userList)
+
+    console.log(getLoadingState(userList.loading, 'GET_USER_LIST_DATA'))
+
     return (
         <div data-testid="result-component" className=' h-full w-full flex flex-row justify-center items-start'>
-           <div className='w-1/2 mt-14 h-5/6'>
+           <div className='w-full px-8 xl:px-0 xl:w-1/2 mt-10'>
            <div className="flex flex-col">
                 <div className="overflow-x-auto shadow-md sm:rounded-lg">
                     <div className="inline-block min-w-full align-middle">
@@ -45,8 +57,8 @@ const Result = () => {
                                     </th>
                                 </tr>
                                 </thead>
-                                <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                                <tr className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <tbody className="bg-white divide-y divide-gray-200">
+                                <tr className="hover:bg-gray-100">
                                     <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-left">837843</td>
                                     <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-left">Apple Imac 27"</td>
                                     <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap text-left">Desktop PC</td>
