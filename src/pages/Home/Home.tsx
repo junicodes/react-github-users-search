@@ -8,7 +8,7 @@ const Home = () => {
     <div data-testid="home-component">
         <Header headerText={
               <strong>
-                  Welcome To This 
+                  Welcome To This&nbsp;
                   <strong className='text-pink-500'>
                       Awesome
                   </strong> 

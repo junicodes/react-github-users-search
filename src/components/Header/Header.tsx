@@ -6,8 +6,8 @@ import { HeaderProps } from './Interfaces';
 const Header = ({headerText, heroText, heroTextAuthor}: HeaderProps) => {
 
     return (
-        <div data-testid="header-component" className={`${styles.container} h-96 w-full flex justify-center items-center animate__animated animate__fadeIn`}>
-          <div>
+        <div data-testid="header-component" className={`${styles.container} h-96 w-full flex justify-center items-center`}>
+          <div className='animate__animated animate__fadeIn'>
             <h1 className='text-3xl md:text-4xl xl:text-5xl text-white font-bold drop-shadow-3xl text-shadow-xl p-5'>
               {headerText}
             </h1>

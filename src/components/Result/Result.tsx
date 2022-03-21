@@ -78,7 +78,7 @@ const Result = ({ payload }: ResultProps) => {
           <div className="overflow-x-auto shadow-md sm:rounded-lg">
             <div className="inline-block min-w-full align-middle">
               <div className="overflow-hidden ">
-                <div className="flex justify-between">
+                <div className="flex justify-between mb-1">
                   <div className="flex justify-start">
                         
                         <small>Ascending</small> 
@@ -117,6 +117,15 @@ const Result = ({ payload }: ResultProps) => {
                 <UserListTable payload={payload} />
               </div>
             </div>
+          </div>
+          {/* Show no login user found here */}
+          <div>
+            {
+                payload?.userList?.items && payload?.userList?.items.length <= 0 &&
+                <div className="mt-5">
+                    <p className="text-lg">No Login User Found</p>
+                </div>
+            }
           </div>
           <div className="flex justify-center items-center mt-4">
             <button
