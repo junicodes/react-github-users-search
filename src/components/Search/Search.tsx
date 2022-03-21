@@ -70,7 +70,7 @@ const Search = () => {
             htmlFor="email"
             className="block mb-2 text-xl font-medium text-gray-900"
           >
-            Let get you started
+            Let's get you started
           </label>
           <input
             type="text"
