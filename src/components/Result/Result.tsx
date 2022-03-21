@@ -33,7 +33,9 @@ const Result = ({ payload }: ResultProps) => {
   //handler function
   const handleNextpage = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, action: string) => {
         e.preventDefault();
-        if( Math.trunc(payload.userList.total_count/payload.per_page) === Math.trunc(payload.page)) return false;
+
+        if(payload.userList.total_count <= payload.per_page
+            || Math.trunc(payload.userList.total_count/payload.per_page) === Math.trunc(payload.page)) return false;
 
         setLoaderInfo({status: true, loader: 'Loading Next Page...'});
         triggerPageLoad(action === 'last' ? payload.userList.total_count/payload.per_page : payload.page + 1);
@@ -108,6 +110,8 @@ const Result = ({ payload }: ResultProps) => {
                     <small>Per Page: {payload.per_page}</small>
                     &nbsp;<span className="text-pink-500">|</span>&nbsp;
                     <small>Total Loaded: {payload.page * payload.per_page}</small>
+                    &nbsp;<span className="text-pink-500">|</span>&nbsp;
+                    <small>Total Found: {payload.page * payload.userList.total_count}</small>
                   </div>
                 </div>
                 <UserListTable payload={payload} />
@@ -137,20 +141,36 @@ const Result = ({ payload }: ResultProps) => {
             </button>
             <button 
               onClick={(e) => handleNextpage(e, 'next')}
-              disabled={Math.trunc(payload.userList.total_count/payload.per_page) === Math.trunc(payload.page) ? true : false}
+              disabled={
+                   payload.userList.total_count <= payload.per_page ||
+                   Math.trunc(payload.userList.total_count/payload.per_page) === Math.trunc(payload.page)
+                   ? true : false
+              }
               type="button"
-              className={`${Math.trunc(payload.userList.total_count/payload.per_page) === Math.trunc(payload.page) ? 'text-gray-200 hover:text-gray-200 border border-gray-200 cursor-not-allowed' 
-              : 'text-pink-500 hover:text-pink-700 border border-pink-500 hover:border-pink-700'}
+              className={`${
+                payload.userList.total_count <= payload.per_page ||
+                  Math.trunc(payload.userList.total_count/payload.per_page) === Math.trunc(payload.page) 
+                  ? 'text-gray-200 hover:text-gray-200 border border-gray-200 cursor-not-allowed' 
+                    : 'text-pink-500 hover:text-pink-700 border border-pink-500 hover:border-pink-700'
+                }
               focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-1 text-center mr-2 cursor-pointer`} 
               >
               Next
             </button>
             <button
               onClick={(e) => handleNextpage(e, 'last')}
-              disabled={Math.trunc(payload.userList.total_count/payload.per_page) === Math.trunc(payload.page) ? true : false}
+              disabled={
+                    payload.userList.total_count <= payload.per_page ||
+                    Math.trunc(payload.userList.total_count/payload.per_page) === Math.trunc(payload.page)
+                    ? true : false
+            }
               type="button"
-              className={`${Math.trunc(payload.userList.total_count/payload.per_page) === Math.trunc(payload.page) ? 'text-gray-200 hover:text-gray-200 border border-gray-200 cursor-not-allowed' 
-              : 'text-pink-500 hover:text-pink-700 border border-pink-500 hover:border-pink-700'}
+              className={`${
+                payload.userList.total_count <= payload.per_page ||
+                  Math.trunc(payload.userList.total_count/payload.per_page) === Math.trunc(payload.page) 
+                  ? 'text-gray-200 hover:text-gray-200 border border-gray-200 cursor-not-allowed' 
+                    : 'text-pink-500 hover:text-pink-700 border border-pink-500 hover:border-pink-700'
+                }
               focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-1 text-center mr-2 cursor-pointer`} 
               >
               Last

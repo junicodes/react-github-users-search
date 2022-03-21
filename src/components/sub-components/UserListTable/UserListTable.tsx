@@ -144,7 +144,13 @@ const Table = ({payload}: ResultProps) => {
                         {item.id}
                         </td>
                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-left">
-                        {item.avatar_url}
+                            <a
+                                href={item.avatar_url}
+                                target="__black"
+                                className="text-pink-500 hover:text-pink-700 hover:underline"
+                            >
+                                {item.avatar_url}
+                            </a>
                         </td>
                         <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap text-left">
                         {item.login}

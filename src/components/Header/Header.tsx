@@ -16,7 +16,7 @@ const Header = ({headerText, heroText, heroTextAuthor}: HeaderProps) => {
               <strong data-testid="hero-text-author" className='text-pink-500'>{heroTextAuthor}</strong>
             </blockquote>
             <div className='flex justify-center mt-8'>
-                 <FaArrowDown className="animate-bounce text-white w-8 h-8 md:w-10 md:h-10" />
+                 <FaArrowDown className="text-white w-8 h-8 md:w-10 md:h-10" />
             </div>
           </div>
         </div>
