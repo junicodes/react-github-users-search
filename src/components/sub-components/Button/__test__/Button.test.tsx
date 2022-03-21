@@ -26,13 +26,5 @@ describe('Button Component Test', () => {
 
         expect(btnElem.textContent).not.toBe("");
     })
-
-    // it("Check if button gets disable when click", () => {
-    //     const btnElem: HTMLButtonElement = screen.getByRole("button");
-
-    //     fireEvent.click(btnElem);
-
-    //     expect(btnElem).toBeDisabled()
-    // })
 })
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Result.module.scss";
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks/reduxhook";
 import { GET_USER_LIST_DATA_ASYNC_ACTION } from "../../react-wrapper/redux/actions/userList";
 import { LoaderState, ResultProps } from "./Interfaces";
@@ -19,7 +18,6 @@ const Result = ({ payload }: ResultProps) => {
   });
 
   //Hooks
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
