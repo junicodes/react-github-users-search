@@ -27,15 +27,13 @@ const ResultList = () => {
     return (
         <div data-testid="resultlist-component" className='w-full'>
             <Header headerText={
-                <>
-                    <strong>
-                        Be Happy and Smile,&nbsp;
-                        <strong className='text-pink-500'>
-                            Great
-                        </strong> 
-                        &nbsp;Mind
-                    </strong>
-                </>
+                <strong>
+                   Be Happy and Smile,&nbsp;
+                   <strong className='text-pink-500'>
+                       Great
+                   </strong> 
+                   &nbsp;Mind
+               </strong>
             } heroText="“There are no secrets to success. It is the result of preparation, hard work, and learning from failure.”"
               heroTextAuthor="General Colin Powell, former US Secretary of State"
             />

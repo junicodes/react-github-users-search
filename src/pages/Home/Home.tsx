@@ -10,7 +10,7 @@ const Home = () => {
               <strong>
                   Welcome To This&nbsp;
                   <strong className='text-pink-500'>
-                      Awesome
+                      Awesome&nbsp;
                   </strong> 
                   App
               </strong>
