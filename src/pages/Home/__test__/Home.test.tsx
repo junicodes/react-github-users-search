@@ -28,7 +28,7 @@ describe('Home Component Test', () => {
 
     it("Should render Result tilte on screen", () => {
         const elem = screen.getByTestId("title");
-        expect(elem.textContent).toBe("Login")
+        expect(elem.textContent).toBe("Search")
     })
 })
 

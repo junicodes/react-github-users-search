@@ -1,4 +1,4 @@
-import { createSlice, current, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { removeLoadingState, sortObjectItem} from "../../../helpers/supportFunctions";
 import { GET_USER_LIST_DATA_ASYNC_ACTION } from "../actions/userList";
 import { RootState } from "../store";
@@ -82,7 +82,7 @@ export const userListSlice = createSlice({
 
       if( action.payload.status === 200 ) {
         //Sort payload with selected column by user
-        const sortedItems = action.payload.data.items.sort(sortObjectItem(state.current_sort.key, state.current_sort.order, state.current_sort.type));
+        action.payload.data.items.sort(sortObjectItem(state.current_sort.key, state.current_sort.order, state.current_sort.type));
         state.userList = action.payload.data
         state.page = action.payload.page;
       };

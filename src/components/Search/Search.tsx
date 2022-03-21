@@ -64,7 +64,7 @@ const Search = () => {
  
   return (
     <div data-testid="search-component" className="flex flex-col item-center justify-center h-full">
-      <form className="w-5/6 xl:w-2/6 mx-auto h-4/6" onSubmit={(e) => handleLogin(e)}>
+      <form className="w-5/6 xl:w-2/6 mx-auto h-4/6 animate__animated animate__fadeIn" onSubmit={(e) => handleLogin(e)}>
         <div className="mb-6">
           <label
             htmlFor="email"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { FaArrowDown } from "@react-icons/all-files/fa/FaArrowDown";
 import { FaArrowUp } from "@react-icons/all-files/fa/FaArrowUp";
 import { ResultProps } from '../../Result/Interfaces';
@@ -31,7 +31,7 @@ const Table = ({payload}: ResultProps) => {
     }
     
     return (
-        <div data-testid="table-component" className="relative">
+        <div data-testid="table-component" className="relative animate__animated animate__fadeIn">
             <table
                     data-testid="result-table"
                     className="min-w-full divide-y divide-gray-200 table-fixed"
@@ -154,7 +154,8 @@ const Table = ({payload}: ResultProps) => {
                         </td>
                         <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
                         <a
-                            href="#"
+                            href={item.html_url}
+                            target="__black"
                             className="text-pink-500 hover:text-pink-700 hover:underline"
                         >
                             View

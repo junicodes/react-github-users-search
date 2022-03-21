@@ -23,7 +23,7 @@ const Home = () => {
       <div className={`${styles.body}`}>
         <h1 className="pt-10">
           <strong className="text-pink-500 text-3xl" data-testid="title">
-              Login
+              Search
           </strong>
         </h1>
         <Search />

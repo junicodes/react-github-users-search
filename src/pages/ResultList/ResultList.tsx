@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import styles from './ResultList.module.scss'
 import { useAppSelector } from '../../hooks/reduxhook'

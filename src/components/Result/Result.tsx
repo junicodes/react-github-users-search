@@ -27,7 +27,7 @@ const Result = ({ payload }: ResultProps) => {
         navigate("/")
     }
     return () => {}
-  }, [payload.userList.items])
+  }, [payload.userList.items, navigate])
   
 
   //handler function
@@ -67,7 +67,7 @@ const Result = ({ payload }: ResultProps) => {
         <div className="flex flex-col">
           <div className={`h-14`}>
             <div data-testid="loading-new-page" className={`${loaderInfo.status ? styles.showloader : "hidden"} my-2 h-24`}>
-                <p className="animate-pulse text-xl mt-2">{loaderInfo.loader}</p>
+                <p className="animate-pulse text-md mt-2">{loaderInfo.loader}</p>
                 <div className={`${styles.loader}`}>
                     <div className={`${styles.loaderBar}`}></div>
                 </div>

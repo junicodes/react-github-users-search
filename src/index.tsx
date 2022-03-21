@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
 import { store  } from '../src/react-wrapper/redux/store';
+import 'animate.css';
 
 ReactDOM.render(
   <React.StrictMode>

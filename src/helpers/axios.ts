@@ -1,7 +1,6 @@
 import axios, { Method, AxiosRequestHeaders } from "axios";
 import { origin } from "./routes";
 import axiosStatus from "./axiosStatus";
-import { ToastNotify } from "./toastNotify";
 
 export const axiosWrapper = async (
     method: Method | undefined,

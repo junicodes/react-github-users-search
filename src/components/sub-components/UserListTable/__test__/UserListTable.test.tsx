@@ -82,9 +82,6 @@ describe('Table Component Test', () => {
         typeCol = screen.getByTestId('type-col');        
 
         iconElems = screen.getAllByTestId('id-icon');
-
-        console.log(iconElems)
-
         fireEvent.click(typeCol);
 
         expect(iconElems[0]).toHaveClass("text-pink-500")
@@ -98,9 +95,6 @@ describe('Table Component Test', () => {
         typeCol = screen.getByTestId('type-col');        
 
         iconElems = screen.getAllByTestId('id-icon');
-
-        console.log(iconElems)
-
         fireEvent.click(typeCol);
 
         expect(iconElems[0]).toHaveClass("text-pink-500")
@@ -114,9 +108,6 @@ describe('Table Component Test', () => {
         typeCol = screen.getByTestId('type-col');        
 
         iconElems = screen.getAllByTestId('login-icon');
-
-        console.log(iconElems)
-
         fireEvent.click(typeCol);
 
         expect(iconElems[0]).toHaveClass("text-pink-500")
@@ -130,9 +121,6 @@ describe('Table Component Test', () => {
         typeCol = screen.getByTestId('type-col');        
 
         iconElems = screen.getAllByTestId('login-icon');
-
-        console.log(iconElems)
-
         fireEvent.click(typeCol);
 
         expect(iconElems[0]).toHaveClass("text-pink-500")
@@ -147,9 +135,6 @@ describe('Table Component Test', () => {
         typeCol = screen.getByTestId('type-col');        
 
         iconElems = screen.getAllByTestId('type-icon');
-
-        console.log(iconElems)
-
         fireEvent.click(typeCol);
 
         expect(iconElems[0]).toHaveClass("text-pink-500")
@@ -163,9 +148,6 @@ describe('Table Component Test', () => {
         typeCol = screen.getByTestId('type-col');        
 
         iconElems = screen.getAllByTestId('type-icon');
-
-        console.log(iconElems)
-
         fireEvent.click(typeCol);
 
         expect(iconElems[0]).toHaveClass("text-pink-500")

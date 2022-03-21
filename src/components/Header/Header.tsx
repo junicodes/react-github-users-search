@@ -6,16 +6,16 @@ import { HeaderProps } from './Interfaces';
 const Header = ({headerText, heroText, heroTextAuthor}: HeaderProps) => {
 
     return (
-        <div data-testid="header-component" className={`${styles.container} h-96 w-full flex justify-center items-center`}>
+        <div data-testid="header-component" className={`${styles.container} h-96 w-full flex justify-center items-center animate__animated animate__fadeIn`}>
           <div>
-            <h1 className='text-3xl md:text-4xl xl:text-5xl text-white font-bold drop-shadow-3xl text-shadow-xl p-5 rounded-full'>
+            <h1 className='text-3xl md:text-4xl xl:text-5xl text-white font-bold drop-shadow-3xl text-shadow-xl p-5'>
               {headerText}
             </h1>
-            <blockquote className='text-white text-md md:text-2xl w-1/2 mx-auto text-shadow-xl'>  
+            <blockquote className='text-white text-md md:text-2xl w-10/12 md:w-1/2 mx-auto text-shadow-xl'>  
               <span data-testid="hero-text">{heroText}</span><br></br><br></br>
               <strong data-testid="hero-text-author" className='text-pink-500'>{heroTextAuthor}</strong>
             </blockquote>
-            <div className='flex justify-center mt-8 cursor-pointer'>
+            <div className='flex justify-center mt-8'>
                  <FaArrowDown className="animate-bounce text-white w-8 h-8 md:w-10 md:h-10" />
             </div>
           </div>
