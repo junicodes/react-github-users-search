@@ -1,11 +1,10 @@
 import React from "react";
-import Home from './Home';
-
-import { render, fireEvent, screen } from "@testing-library/react";
+import Home from '../Home';
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 import { Provider } from "react-redux";
-import { store  } from '../../../src/react-wrapper/redux/store';
+import { store  } from '../../../react-wrapper/redux/store';
 import { BrowserRouter } from "react-router-dom";
 
 const Mock = () => {
@@ -23,7 +22,7 @@ describe('Home Component Test', () => {
         render(<Mock />);
     })
     
-    test("Make sure component is rendered", () => {
+    it("Make sure component is rendered", () => {
         expect(screen.getByTestId("home-component")).toBeInTheDocument();
     });
 

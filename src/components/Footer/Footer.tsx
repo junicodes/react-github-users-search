@@ -1,12 +1,3 @@
-import React, { useState } from 'react'
-
-import { useAppSelector, useAppDispatch } from '../../hooks/reduxhook'
-import { 
-    selectUserList,
-    resetUserList,
-    setUserList
- } from "../../react-wrapper/redux/slices/userListSlice";
-
 
 const Footer = () => {
     return (

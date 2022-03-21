@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { getLoadingState } from "../../helpers/supportFunctions";
-import { useAppDispatch } from "../../hooks/reduxhook";
+import { ToastNotify } from "../../helpers/toastNotify";
+import { useAppSelector, useAppDispatch } from '../../hooks/reduxhook'
 import { GET_USER_LIST_DATA_ASYNC_ACTION } from "../../react-wrapper/redux/actions/userList";
 import { BtnActionState } from "./Interfaces";
+import { selectUserList, setSearchQuery, UserListState } from "../../react-wrapper/redux/slices/userListSlice";
 
 const Search = () => {
     //State
@@ -14,8 +15,9 @@ const Search = () => {
     });
 
     //Hooks
-    const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const userList = useAppSelector<UserListState>(selectUserList);
+    const dispatch = useAppDispatch();
     
     //handler Function
     const handleValChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,24 +26,36 @@ const Search = () => {
             [e.target.name]: e.target.value
         });
     }
+
     //Request Functions
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-
         e.preventDefault();
+
+        //If loginVal is empty thow error
+        if(btnAction.loginVal === "") {
+            ToastNotify({
+                type: "error", 
+                message: `Ooops something not right, please refresh and try angain or contact support.`,
+                position: "top-center"
+            })
+            return false;
+        }
         
         setBtnAction({ ...btnAction, ...{ disable: true, btnText: 'Loading...'} });
 
+        //Simulate a temperary delay 
         const delay = setTimeout(async () => {
 
-            await dispatch(GET_USER_LIST_DATA_ASYNC_ACTION(btnAction.loginVal));
+            await dispatch(GET_USER_LIST_DATA_ASYNC_ACTION([btnAction.loginVal, userList.per_page, 1]));
+
+            //dispatch search query value to redux
+            dispatch(setSearchQuery(btnAction.loginVal));
 
             setBtnAction({...btnAction, ...{ disable: false, btnText: 'Submit', loginVal: "" }});   
             
             navigate('/result-list')
             
-        }, 2000);
-
-        //Redirect to Result List Screen 
+        }, 500);
 
         return () => clearTimeout(delay);
 
@@ -70,7 +84,7 @@ const Search = () => {
         </div>
         <button
           type="submit"
-          className="text-white bg-pink-500 hover:bg-pink-600 focus:ring-4 h-14 focus:ring-blue-300 font-medium rounded-lg text-lg w-full sm:w-2/6 px-5 py-2.5 text-center"
+          className="text-white bg-pink-500 hover:bg-pink-600 focus:ring-4 h-14 focus:ring-pink-300 font-medium rounded-lg text-lg w-full sm:w-2/6 px-5 py-2.5 text-center"
           disabled={btnAction.disable}
         >
           {btnAction.btnText}

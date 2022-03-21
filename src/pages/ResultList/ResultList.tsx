@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import styles from './ResultList.module.scss'
-import { useAppSelector, useAppDispatch } from '../../hooks/reduxhook'
-import { 
-    selectUserList,
-    UserListState
- } from "../../react-wrapper/redux/slices/userListSlice";
+import { useAppSelector } from '../../hooks/reduxhook'
+import { selectUserList, UserListState} from "../../react-wrapper/redux/slices/userListSlice";
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Result from '../../components/Result/Result';
@@ -13,16 +10,19 @@ import Result from '../../components/Result/Result';
 
 const ResultList = () => {
 
+    //Hooks
+    const userList = useAppSelector<UserListState>(selectUserList);
+
     return (
-        <div data-testid="resultlist-component">
+        <div data-testid="resultlist-component" className='w-full'>
             <Header headerText={
                 <>
                     <strong>
-                        Welcome To This 
+                        Be Happy and Smile,&nbsp;
                         <strong className='text-pink-500'>
-                            Awesome
+                            Great
                         </strong> 
-                        App
+                        &nbsp;Mind
                     </strong>
                 </>
             } heroText="“There are no secrets to success. It is the result of preparation, hard work, and learning from failure.”"
@@ -34,15 +34,20 @@ const ResultList = () => {
                         Result
                     </strong>
                 </h1>
-                <Result />
+                <p className='mt-3 text-2xl'>
+                    Search Query:&nbsp;
+                    <span data-testid="search-query" className='italic'>"{userList.searchQuery}"</span>
+                </p>
+                <Result payload={userList} />
             </div>
             <div className='mb-5'>
-                <p>Click to search with another&nbsp;
+                <p>Click here to search with another&nbsp;
                     <Link to="/">
                         <span className='text-pink-500 hover:text-pink-700 cursor-pointer'>
                         Login
                         </span>
                     </Link>
+                    &nbsp;user
                 </p>
             </div>
             <Footer />

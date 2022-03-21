@@ -1,7 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { removeLoadingState} from "../../../helpers/supportFunctions";
+import { createSlice, current, PayloadAction } from '@reduxjs/toolkit';
+import { removeLoadingState, sortObjectItem} from "../../../helpers/supportFunctions";
 import { GET_USER_LIST_DATA_ASYNC_ACTION } from "../actions/userList";
-// import { ToastNotify } from "../../../helpers/toastNotify"
 import { RootState } from "../store";
 
 
@@ -12,8 +11,19 @@ export interface UserListPayloadState {
 }
 
 export interface UserListState {
-  userList: UserListPayloadState,
+  searchQuery: string,
+  userList: {
+    total_count: number,
+    incomplete_results: boolean,
+    items: object[] | null
+  },
   loading: string[]
+  per_page: number,
+  page: number
+  current_sort: {
+    key: string,
+    order: string
+  }
 }
 
 //Create a reusable userList default payload
@@ -23,19 +33,37 @@ export const userListDefaultPayload = {
   items: null
 }
 
-const initialState = {
+export const initialState = {
+  searchQuery: '',
   userList: userListDefaultPayload,
-  loading: []
-} as UserListState ;
+  loading: [],
+  per_page: 9,
+  page: 1,
+  current_sort: {key: 'login', order: 'asc'}
+} as UserListState;
+
 
 export const userListSlice = createSlice({
   name: 'userList',
   initialState,
   
   reducers: {
-    setUserList: (state, action: PayloadAction<UserListPayloadState>) => {
-      state.userList = action.payload;
+    setUserList: (state, action: PayloadAction<object[]>) => {
+      state.userList.items = action.payload;
     },
+
+    setSearchQuery: (state, action: PayloadAction<string>) => {
+      state.searchQuery = action.payload;
+    },
+
+    setPage: (state, action: PayloadAction<number>) => {
+      state.page = action.payload;
+    },
+
+    setCurrentSort: (state, action: PayloadAction<{ key: string, order: string}>) => {
+      state.current_sort = action.payload;
+    },
+
 
     resetUserList: (state) => {
       //Format the userlist state to default state
@@ -50,8 +78,14 @@ export const userListSlice = createSlice({
     })
     .addCase(GET_USER_LIST_DATA_ASYNC_ACTION.fulfilled, (state, action) => {
       state.loading = removeLoadingState(state.loading, 'GET_USER_LIST_DATA')
-      // console.log(action, "action")
-      if(action.payload) state.userList = action.payload;
+
+      if( action.payload.status === 200 ) {
+        //Sort payload with selected column by user
+        const sortedItems = action.payload.data.items.sort(sortObjectItem(state.current_sort.key, state.current_sort.order, 'object'));
+        state.userList = action.payload.data
+        state.page = action.payload.page;
+      };
+
     });
   }
 
@@ -61,6 +95,6 @@ export const userListSlice = createSlice({
 export const selectUserList = (state: RootState) => state.userList;
 
 // Reducers and actions
-export const { setUserList, resetUserList } = userListSlice.actions;
+export const { setUserList, resetUserList, setSearchQuery, setPage, setCurrentSort} = userListSlice.actions;
 
 export default userListSlice.reducer;

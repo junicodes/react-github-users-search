@@ -11,7 +11,7 @@ export function ToastNotify({type = "default", message = "Welcome", position = "
 
   const body: ToastOptions = {
     position,
-    autoClose: 10000,
+    autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,

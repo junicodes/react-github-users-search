@@ -1,11 +1,11 @@
 import React from "react";
-import ResultList from './ResultList';
+import ResultList from '../ResultList';
 
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 import { Provider } from "react-redux";
-import { store  } from '../../../src/react-wrapper/redux/store';
+import { store  } from '../../../react-wrapper/redux/store';
 import { BrowserRouter } from "react-router-dom";
 
 const Mock = () => {
@@ -30,6 +30,10 @@ describe('Home Component Test', () => {
     it("Should render Result tilte on screen", () => {
         const elem = screen.getByTestId("title");
         expect(elem.textContent).toBe("Result")
+    })
+    it("Should render search query from login", () => {
+        const elem = screen.getByTestId("search-query");
+        expect(elem.textContent).not.toBe("")
     })
 })
 

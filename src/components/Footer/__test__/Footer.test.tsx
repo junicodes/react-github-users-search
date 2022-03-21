@@ -1,7 +1,6 @@
-import React from "react";
-import Footer from './Footer';
+import Footer from '../Footer';
 
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render,screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 

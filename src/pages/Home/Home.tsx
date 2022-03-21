@@ -7,15 +7,13 @@ const Home = () => {
   return (
     <div data-testid="home-component">
         <Header headerText={
-                <>
-                    <strong>
-                        Welcome To This 
-                        <strong className='text-pink-500'>
-                            Awesome
-                        </strong> 
-                        App
-                    </strong>
-                </>
+              <strong>
+                  Welcome To This 
+                  <strong className='text-pink-500'>
+                      Awesome
+                  </strong> 
+                  App
+              </strong>
             }  
             heroText="It doesn't matter if you come from the inner city.
             People who fail in life are people who find lots of excuses. 

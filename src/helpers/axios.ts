@@ -18,18 +18,10 @@ export const axiosWrapper = async (
         if(method === 'put' && body) response = await axios.put(`${origin}${route}`);
         if(method === 'delete' && body) response = await axios.delete(`${origin}${route}`);
         
-        const res = axiosStatus(response);
-
-        if(res === 200 || res === 201) { return response.data; } 
-        return { status: res, data: null };
+        return { status: response.status, data: response.data };
         
-    } catch (error) {
-
-        ToastNotify({
-            type: "error", 
-            message: `An unexpected error occured, please referesh and try again`,
-            position: "top-center"
-        })
-        return { status: null, data: null };
+    } catch (error: any) {
+        axiosStatus(error.response);
+        return { status: error.response.status, data: null };
     }
 };
