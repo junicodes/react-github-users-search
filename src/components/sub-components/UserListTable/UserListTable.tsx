@@ -53,7 +53,7 @@ const Table = ({payload}: ResultProps) => {
                     <div onClick={(e) => handleSort(e, 'id', 'number')} data-testid="id-col" className="flex justify-start space-x-1  cursor-pointer">
                         <span>Id</span>
                         {
-                            payload.current_sort.order === 'asc' &&
+                            payload.userList.total_count > 0 && payload.current_sort.order === 'asc' &&
                             <FaArrowDown
                             title="Click to sort in descending order"
                             data-testid="id-icon"
@@ -61,7 +61,7 @@ const Table = ({payload}: ResultProps) => {
                             />
                         }
                         {
-                            payload.current_sort.order === 'desc' &&
+                            payload.userList.total_count > 0 && payload.current_sort.order === 'desc' &&
                             <FaArrowUp
                             title="Click to sort in ascending order"
                             data-testid="id-icon"
@@ -83,7 +83,7 @@ const Table = ({payload}: ResultProps) => {
                     <div onClick={(e) => handleSort(e, 'login', 'object')} data-testid="login-col" className="flex justify-start space-x-1  cursor-pointer">
                         <span>Login</span>
                         {
-                            payload.current_sort.order === 'asc' &&
+                            payload.userList.total_count > 0 && payload.current_sort.order === 'asc' &&
                             <FaArrowDown
                                 title="Click to sort in descending order"
                                 data-testid="login-icon"
@@ -91,7 +91,7 @@ const Table = ({payload}: ResultProps) => {
                             />
                         }
                         {
-                            payload.current_sort.order === 'desc' &&
+                            payload.userList.total_count > 0 && payload.current_sort.order === 'desc' &&
                             <FaArrowUp
                             title="Click to sort in ascending order"
                             data-testid="login-icon"
@@ -107,7 +107,7 @@ const Table = ({payload}: ResultProps) => {
                     <div onClick={(e) => handleSort(e, 'type', 'object')} data-testid="type-col" className="flex justify-start space-x-1 cursor-pointer">
                         <span>Type</span>
                         {
-                            payload.current_sort.order === 'asc'&&
+                            payload.userList.total_count > 0 && payload.current_sort.order === 'asc'&&
                             <FaArrowDown
                             title="Click to sort in descending order"
                             data-testid="type-icon"
@@ -115,7 +115,7 @@ const Table = ({payload}: ResultProps) => {
                             />
                         }
                         {
-                            payload.current_sort.order === 'desc' &&
+                            payload.userList.total_count > 0 && payload.current_sort.order === 'desc' &&
                             <FaArrowUp
                             title="Click to sort in ascending order"
                             data-testid="type-icon"
