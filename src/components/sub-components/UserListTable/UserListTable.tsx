@@ -11,37 +11,27 @@ const Table = ({payload}: ResultProps) => {
     //hook
     const dispatch = useAppDispatch();
 
-    const handleSort = (e:React.MouseEvent<HTMLDivElement, MouseEvent>, clickKey: string) => {
+    const handleSort = (e:React.MouseEvent<HTMLDivElement, MouseEvent>, clickKey: string, clickType: string) => {
         e.preventDefault();
-        console.log(payload.userList.items)
+
         if(payload.userList.items) {
             const temp = [...payload.userList.items];
+            let key   = payload.current_sort.key;
             let order = payload.current_sort.order;
-            let key = payload.current_sort.key;
+            //If the key is not the same with the redux state 
+            key = clickKey;
+            //If the key is the same with the redux state  
+            if(key === clickKey) { order === 'asc' ? order = 'desc' : order = 'asc'}
 
-            console.log(order, key)
-
-            console.log(key === clickKey && order === 'asc')
-            console.log(key === clickKey && order === 'desc')
-
-            key === clickKey && order === 'asc' ? order = 'desc' : order = 'asc'
-
-
-            console.log(key)
-            console.log(order)
-
-            temp.sort(sortObjectItem(key, order, 'object'));
+            temp.sort(sortObjectItem(key, order, clickType));
 
             dispatch(setUserList(temp))
-            dispatch(setCurrentSort({key, order}))
-
-            console.log(temp)
+            dispatch(setCurrentSort({key, order, type: clickType}))
         }
     }
     
     return (
         <div data-testid="table-component" className="relative">
-            <p data-testid="sort-checker" className='absolute -mt-6 hidden'>{payload.current_sort.key}</p>
             <table
                     data-testid="result-table"
                     className="min-w-full divide-y divide-gray-200 table-fixed"
@@ -60,12 +50,13 @@ const Table = ({payload}: ResultProps) => {
                     scope="col"
                     className="py-3 px-6 text-sm tracking-wider text-left font-bold uppercase"
                     >
-                    <div className="flex justify-start space-x-1  cursor-pointer">
+                    <div onClick={(e) => handleSort(e, 'id', 'number')} data-testid="id-col" className="flex justify-start space-x-1  cursor-pointer">
                         <span>Id</span>
                         {
                             payload.current_sort.order === 'asc' &&
                             <FaArrowDown
                             title="Click to sort in descending order"
+                            data-testid="id-down-icon"
                             className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'id' ? 'text-pink-500': 'text-gray-300'}`}
                             />
                         }
@@ -73,6 +64,7 @@ const Table = ({payload}: ResultProps) => {
                             payload.current_sort.order === 'desc' &&
                             <FaArrowUp
                             title="Click to sort in ascending order"
+                            data-testid="id-up-icon"
                             className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'id' ? 'text-pink-500': 'text-gray-300'}`}
                             />
                         }
@@ -88,7 +80,7 @@ const Table = ({payload}: ResultProps) => {
                     scope="col"
                     className="py-3 px-6 text-sm tracking-wider text-left font-bold uppercase"
                     >
-                    <div onClick={(e) => handleSort(e, 'login')} data-testid="login-col" className="flex justify-start space-x-1  cursor-pointer">
+                    <div onClick={(e) => handleSort(e, 'login', 'object')} data-testid="login-col" className="flex justify-start space-x-1  cursor-pointer">
                         <span>Login</span>
                         {
                             payload.current_sort.order === 'asc' &&
@@ -110,7 +102,7 @@ const Table = ({payload}: ResultProps) => {
                     scope="col"
                     className="py-3 px-6 text-sm tracking-wider text-left font-bold uppercase"
                     >
-                    <div className="flex justify-start space-x-1 cursor-pointer">
+                    <div onClick={(e) => handleSort(e, 'type', 'object')} data-testid="type-col" className="flex justify-start space-x-1 cursor-pointer">
                         <span>Type</span>
                         {
                             payload.current_sort.order === 'asc'&&
@@ -168,6 +160,7 @@ const Table = ({payload}: ResultProps) => {
                     ))}
                 </tbody>
             </table>
+            <p data-testid="sort-checker" className='absolute -mt-6 hidden'>{payload.current_sort.key}</p>
         </div>
     )
 }

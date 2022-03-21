@@ -23,6 +23,7 @@ export interface UserListState {
   current_sort: {
     key: string,
     order: string
+    type: string
   }
 }
 
@@ -39,7 +40,7 @@ export const initialState = {
   loading: [],
   per_page: 9,
   page: 1,
-  current_sort: {key: 'login', order: 'asc'}
+  current_sort: {key: 'login', order: 'asc', type: 'object'}
 } as UserListState;
 
 
@@ -60,7 +61,7 @@ export const userListSlice = createSlice({
       state.page = action.payload;
     },
 
-    setCurrentSort: (state, action: PayloadAction<{ key: string, order: string}>) => {
+    setCurrentSort: (state, action: PayloadAction<{ key: string, order: string, type: string}>) => {
       state.current_sort = action.payload;
     },
 
@@ -81,7 +82,7 @@ export const userListSlice = createSlice({
 
       if( action.payload.status === 200 ) {
         //Sort payload with selected column by user
-        const sortedItems = action.payload.data.items.sort(sortObjectItem(state.current_sort.key, state.current_sort.order, 'object'));
+        const sortedItems = action.payload.data.items.sort(sortObjectItem(state.current_sort.key, state.current_sort.order, state.current_sort.type));
         state.userList = action.payload.data
         state.page = action.payload.page;
       };

@@ -21,7 +21,7 @@ describe('Userlist reducer test', () => {
     ],
     per_page: 9,
     page: 2,
-    current_sort: {key: 'login', order: 'asc'}
+    current_sort: {key: 'login', order: 'asc', type: 'object'}
   }
 
   it('It should handle default state', () => {

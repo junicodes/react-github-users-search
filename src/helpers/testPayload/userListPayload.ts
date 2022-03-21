@@ -74,5 +74,5 @@ export const userListReduxState = {
     ],
     per_page: 9,
     page: 1,
-    current_sort: {key: 'login', order: 'asc'}
+    current_sort: {key: 'login', order: 'asc', type: 'object'}
 }
