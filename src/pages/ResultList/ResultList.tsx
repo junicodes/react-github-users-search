@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from './ResultList.module.scss'
 import { useAppSelector } from '../../hooks/reduxhook'
@@ -5,12 +6,23 @@ import { selectUserList, UserListState} from "../../react-wrapper/redux/slices/u
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Result from '../../components/Result/Result';
+import { useNavigate } from "react-router-dom";
 
 
 const ResultList = () => {
 
     //Hooks
     const userList = useAppSelector<UserListState>(selectUserList);
+    const navigate = useNavigate();
+
+    //Effect
+    useEffect(() => {
+        //redirect if payload item is null or localstorage is empty
+        if(!userList.userList.items) {
+            navigate("/")
+        }
+        return () => {}
+    }, [userList.userList.items, navigate])
 
     return (
         <div data-testid="resultlist-component" className='w-full'>
