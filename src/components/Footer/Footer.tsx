@@ -7,7 +7,7 @@ const Footer = () => {
             <div className='containe h-full w-full mx-auto flex flex-col justify-center items-center'>
                 <div className="flex justify-center text-xs">
                     <p>Design by the only fire coder&nbsp;</p>
-                    <FaSmileWink  className="mt-1 text-gray-400"/>&nbsp;
+                    <FaSmileWink  className=" text-gray-500"/>&nbsp;
                     <a className="" href="https://github.com/junicodes" target="__blank" title="Open junicodes github">
                          <strong className='text-pink-500'>{`<Junicodes />`}</strong>
                     </a>
