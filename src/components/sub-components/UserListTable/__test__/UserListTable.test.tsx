@@ -15,6 +15,7 @@ let loginCol: HTMLDivElement;
 let idCol: HTMLDivElement;
 let typeCol: HTMLDivElement;
 let sortChecker: HTMLElement;
+let iconElems: HTMLElement[];
 
 const Mock = ({payload}: ResultProps ) => {
     return (
@@ -35,7 +36,7 @@ describe('Table Component Test', () => {
 
     it("When id row column is click it should change the sorting state to id", () => {
         render(<Mock payload={{...userListReduxState, ...{
-            current_sort: {key: 'id', order: 'asc', type: 'object'}
+            current_sort: {key: 'id', order: 'asc', type: 'number'}
         } }} />);
 
 
@@ -52,6 +53,7 @@ describe('Table Component Test', () => {
             current_sort: {key: 'login', order: 'asc', type: 'object'}}
         }} />);
         loginCol = screen.getByTestId('login-col');
+
         sortChecker =screen.getByTestId('sort-checker');
 
         fireEvent.click(idCol);
@@ -59,29 +61,114 @@ describe('Table Component Test', () => {
         expect(sortChecker.textContent).toBe("login")
     })
 
-    it("When type row column is click it should change the sorting state to type", async () => {
+    it("When type row column is click it should change the sorting state to type", () => {
         render(<Mock payload={{...userListReduxState, ...{
             current_sort: {key: 'type', order: 'asc', type: 'object'}
         } }} />);
         typeCol = screen.getByTestId('type-col');
 
-        fireEvent.click(typeCol);
+        sortChecker = screen.getByTestId('sort-checker');
 
-        sortChecker = await screen.findByTestId('sort-checker');
+        fireEvent.click(typeCol);
         
         expect(sortChecker.textContent).toBe("type")
     })
 
-    // it("Login row should change sort icon color to pink when clicked", () => {
-    //     loginCol = screen.getByTestId('login-col');
-    //     sortChecker =screen.getByTestId('sort-checker');
+    it("Id row icon should have a class of pink when clicked for ascending", () => {
+        render(<Mock payload={{...userListReduxState, ...{
+            current_sort: {key: 'id', order: 'asc', type: 'number'}
+        } }} />);
 
-    //     fireEvent.click(loginCol);
+        typeCol = screen.getByTestId('type-col');        
+
+        iconElems = screen.getAllByTestId('id-icon');
+
+        console.log(iconElems)
+
+        fireEvent.click(typeCol);
+
+        expect(iconElems[0]).toHaveClass("text-pink-500")
+    })
+
+    it("Id row icon should have a class of pink when clicked for decending", () => {
+        render(<Mock payload={{...userListReduxState, ...{
+            current_sort: {key: 'id', order: 'desc', type: 'number'}
+        } }} />);
+
+        typeCol = screen.getByTestId('type-col');        
+
+        iconElems = screen.getAllByTestId('id-icon');
+
+        console.log(iconElems)
+
+        fireEvent.click(typeCol);
+
+        expect(iconElems[0]).toHaveClass("text-pink-500")
+    });
+
+    it("Login row icon should have a class of pink when clicked for ascending", () => {
+        render(<Mock payload={{...userListReduxState, ...{
+            current_sort: {key: 'login', order: 'asc', type: 'object'}
+        } }} />);
+
+        typeCol = screen.getByTestId('type-col');        
+
+        iconElems = screen.getAllByTestId('login-icon');
+
+        console.log(iconElems)
+
+        fireEvent.click(typeCol);
+
+        expect(iconElems[0]).toHaveClass("text-pink-500")
+    })
+
+    it("Login row icon should have a class of pink when clicked for decending", () => {
+        render(<Mock payload={{...userListReduxState, ...{
+            current_sort: {key: 'login', order: 'desc', type: 'object'}
+        } }} />);
+
+        typeCol = screen.getByTestId('type-col');        
+
+        iconElems = screen.getAllByTestId('login-icon');
+
+        console.log(iconElems)
+
+        fireEvent.click(typeCol);
+
+        expect(iconElems[0]).toHaveClass("text-pink-500")
+    })
 
 
+    it("Type row icon should have a class of pink when clicked for ascending", () => {
+        render(<Mock payload={{...userListReduxState, ...{
+            current_sort: {key: 'type', order: 'asc', type: 'object'}
+        } }} />);
 
-    //     expect(sortChecker.textContent).toBe("login")
-        
-    // })
+        typeCol = screen.getByTestId('type-col');        
+
+        iconElems = screen.getAllByTestId('type-icon');
+
+        console.log(iconElems)
+
+        fireEvent.click(typeCol);
+
+        expect(iconElems[0]).toHaveClass("text-pink-500")
+    })
+
+    it("Type row icon should have a class of pink when clicked for decending", () => {
+        render(<Mock payload={{...userListReduxState, ...{
+            current_sort: {key: 'type', order: 'desc', type: 'object'}
+        } }} />);
+
+        typeCol = screen.getByTestId('type-col');        
+
+        iconElems = screen.getAllByTestId('type-icon');
+
+        console.log(iconElems)
+
+        fireEvent.click(typeCol);
+
+        expect(iconElems[0]).toHaveClass("text-pink-500")
+    })
 })
 

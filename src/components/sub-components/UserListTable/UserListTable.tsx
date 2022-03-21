@@ -56,7 +56,7 @@ const Table = ({payload}: ResultProps) => {
                             payload.current_sort.order === 'asc' &&
                             <FaArrowDown
                             title="Click to sort in descending order"
-                            data-testid="id-down-icon"
+                            data-testid="id-icon"
                             className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'id' ? 'text-pink-500': 'text-gray-300'}`}
                             />
                         }
@@ -64,7 +64,7 @@ const Table = ({payload}: ResultProps) => {
                             payload.current_sort.order === 'desc' &&
                             <FaArrowUp
                             title="Click to sort in ascending order"
-                            data-testid="id-up-icon"
+                            data-testid="id-icon"
                             className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'id' ? 'text-pink-500': 'text-gray-300'}`}
                             />
                         }
@@ -86,6 +86,7 @@ const Table = ({payload}: ResultProps) => {
                             payload.current_sort.order === 'asc' &&
                             <FaArrowDown
                                 title="Click to sort in descending order"
+                                data-testid="login-icon"
                                 className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'login' ? 'text-pink-500': 'text-gray-300'}`}
                             />
                         }
@@ -93,6 +94,7 @@ const Table = ({payload}: ResultProps) => {
                             payload.current_sort.order === 'desc' &&
                             <FaArrowUp
                             title="Click to sort in ascending order"
+                            data-testid="login-icon"
                             className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'login' ? 'text-pink-500': 'text-gray-300'}`}
                             />
                         }
@@ -108,6 +110,7 @@ const Table = ({payload}: ResultProps) => {
                             payload.current_sort.order === 'asc'&&
                             <FaArrowDown
                             title="Click to sort in descending order"
+                            data-testid="type-icon"
                             className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'type' ? 'text-pink-500': 'text-gray-300'}`}
                             />
                         }
@@ -115,6 +118,7 @@ const Table = ({payload}: ResultProps) => {
                             payload.current_sort.order === 'desc' &&
                             <FaArrowUp
                             title="Click to sort in ascending order"
+                            data-testid="type-icon"
                             className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'type' ? 'text-pink-500': 'text-gray-300'}`}
                             />
                         }
