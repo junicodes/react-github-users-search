@@ -1,5 +1,5 @@
 import React from "react";
-import Home from '../Home';
+import Home from '..';
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 

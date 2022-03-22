@@ -1,7 +1,7 @@
 import { ButtonProps } from './Interfaces'
 
 
-const Button = ({ btnText, disabled, className, onTriggerFunction}: ButtonProps) => {
+const Button = ({ btnText, disabled, variant, onTriggerFunction}: ButtonProps) => {
 
     const handleBtnClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, ...other: any) => {
         return onTriggerFunction(e, other)
@@ -12,7 +12,7 @@ const Button = ({ btnText, disabled, className, onTriggerFunction}: ButtonProps)
             onClick={(e) => handleBtnClick(e, 'last')}
             disabled={disabled}
             type="button"
-            className={className}
+            className={variant}
             >
             {btnText}
         </button>

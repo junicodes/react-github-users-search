@@ -2,8 +2,8 @@ import React from 'react';
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import './App.scss';
 import { ToastContainer } from 'react-toastify';
-import Home from './pages/Home/Home';
-import ResultList from './pages/ResultList/ResultList';
+import Home from './pages/Home';
+import ResultList from './pages/ResultList';
 
 function App() {
   return (

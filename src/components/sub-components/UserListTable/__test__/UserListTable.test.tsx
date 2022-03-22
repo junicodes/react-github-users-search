@@ -1,5 +1,5 @@
 import React from "react";
-import UserListTable from '../UserListTable';
+import UserListTable from '..';
 
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";

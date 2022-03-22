@@ -1,5 +1,5 @@
 import React from "react";
-import Button from '../Button';
+import Button from '..';
 
 import { render, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
@@ -11,7 +11,7 @@ describe('Button Component Test', () => {
         <Button
             btnText="Submit"
             disabled={false}
-            className="bg-red-400"
+            variant="bg-red-400"
             onTriggerFunction={(_e) => {}}
          />);
     })

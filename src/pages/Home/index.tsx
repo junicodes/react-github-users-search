@@ -1,7 +1,7 @@
 import styles from "./Home.module.scss";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import Search from "../../components/Search/Search";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import Search from "../../components/Search";
 
 const Home = () => {
   return (

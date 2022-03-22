@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import styles from './ResultList.module.scss'
 import { useAppSelector } from '../../hooks/reduxhook'
 import { selectUserList, UserListState} from "../../react-wrapper/redux/slices/userListSlice";
-import Footer from '../../components/Footer/Footer';
-import Header from '../../components/Header/Header';
-import Result from '../../components/Result/Result';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
+import Result from '../../components/Result';
 import { useNavigate } from "react-router-dom";
 
 

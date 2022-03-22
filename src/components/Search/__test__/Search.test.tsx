@@ -1,4 +1,4 @@
-import Search from '../Search';
+import Search from '..';
 
 import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";

@@ -3,10 +3,10 @@ import styles from "./Result.module.scss";
 import { useAppDispatch } from "../../hooks/reduxhook";
 import { GET_USER_LIST_DATA_ASYNC_ACTION } from "../../react-wrapper/redux/actions/userList";
 import { LoaderState, ResultProps } from "./Interfaces";
-import UserListTable from "../sub-components/UserListTable/UserListTable";
+import UserListTable from "../sub-components/UserListTable";
 import { FaArrowDown } from "@react-icons/all-files/fa/FaArrowDown";
 import { FaArrowUp } from "@react-icons/all-files/fa/FaArrowUp";
-import Button from "../sub-components/Button/Button";
+import Button from "../sub-components/Button";
 
 const Result = ({ payload }: ResultProps) => {
 
@@ -135,7 +135,7 @@ const Result = ({ payload }: ResultProps) => {
             <Button 
                 onTriggerFunction={(e) => handlePrevpage(e, 'first')}
                 disabled={payload.page <= 1 ? true : false}
-                className={`${payload.page <= 1 ? 'text-gray-200 hover:text-gray-200 border border-gray-200 cursor-not-allowed' 
+                variant={`${payload.page <= 1 ? 'text-gray-200 hover:text-gray-200 border border-gray-200 cursor-not-allowed' 
                   : 'text-pink-500 hover:text-pink-700 border border-pink-500 hover:border-pink-700'}
                   focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-1 text-center mr-2 cursor-pointer`} 
                 btnText="First"
@@ -143,7 +143,7 @@ const Result = ({ payload }: ResultProps) => {
             <Button 
                 onTriggerFunction={(e) => handlePrevpage(e, 'prev')}
                 disabled={payload.page <= 1 ? true : false}
-                className={`${payload.page <= 1 ? 'text-gray-200 hover:text-gray-200 border border-gray-200 cursor-not-allowed' 
+                variant={`${payload.page <= 1 ? 'text-gray-200 hover:text-gray-200 border border-gray-200 cursor-not-allowed' 
                   : 'text-pink-500 hover:text-pink-700 border border-pink-500 hover:border-pink-700'}
                   focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-1 text-center mr-2 cursor-pointer`} 
                 btnText="Prev"
@@ -155,7 +155,7 @@ const Result = ({ payload }: ResultProps) => {
                    Math.trunc(payload.userList.total_count/payload.per_page) === Math.trunc(payload.page)
                    ? true : false
                 }
-                className={`${
+                variant={`${
                     payload.userList.total_count <= payload.per_page ||
                       Math.trunc(payload.userList.total_count/payload.per_page) === Math.trunc(payload.page) 
                       ? 'text-gray-200 hover:text-gray-200 border border-gray-200 cursor-not-allowed' 
@@ -171,7 +171,7 @@ const Result = ({ payload }: ResultProps) => {
                    Math.trunc(payload.userList.total_count/payload.per_page) === Math.trunc(payload.page)
                    ? true : false
                 }
-                className={`${
+                variant={`${
                     payload.userList.total_count <= payload.per_page ||
                       Math.trunc(payload.userList.total_count/payload.per_page) === Math.trunc(payload.page) 
                       ? 'text-gray-200 hover:text-gray-200 border border-gray-200 cursor-not-allowed' 
