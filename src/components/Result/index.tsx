@@ -124,12 +124,11 @@ const Result = ({ payload }: ResultProps) => {
           </div>
           {/* Show no login user found here */}
           <div>
-            {
-                payload?.userList?.items && payload?.userList?.items.length <= 0 &&
+            { payload?.userList?.items && payload?.userList?.items.length <= 0 && (
                 <div className="mt-5">
                     <p className="text-lg">No Login User Found</p>
                 </div>
-            }
+            )}
           </div>
           <div className="flex justify-center items-center mt-4">
             <Button 

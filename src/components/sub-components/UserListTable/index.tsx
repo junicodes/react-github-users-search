@@ -50,25 +50,23 @@ const Table = ({payload}: ResultProps) => {
                     scope="col"
                     className="py-3 px-6 text-sm tracking-wider text-left font-bold uppercase"
                     >
-                    <div onClick={(e) => handleSort(e, 'id', 'number')} data-testid="id-col" className="flex justify-start space-x-1  cursor-pointer">
-                        <span>Id</span>
-                        {
-                            payload.userList.total_count > 0 && payload.current_sort.order === 'asc' &&
-                            <FaArrowDown
-                            title="Click to sort in descending order"
-                            data-testid="id-icon"
-                            className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'id' ? 'text-pink-500': 'text-gray-300'}`}
-                            />
-                        }
-                        {
-                            payload.userList.total_count > 0 && payload.current_sort.order === 'desc' &&
-                            <FaArrowUp
-                            title="Click to sort in ascending order"
-                            data-testid="id-icon"
-                            className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'id' ? 'text-pink-500': 'text-gray-300'}`}
-                            />
-                        }
-                    </div>
+                        <div onClick={(e) => handleSort(e, 'id', 'number')} data-testid="id-col" className="flex justify-start space-x-1  cursor-pointer">
+                            <span>Id</span>
+                            { payload.userList.total_count > 0 && payload.current_sort.order === 'asc' && (
+                                <FaArrowDown
+                                    title="Click to sort in descending order"
+                                    data-testid="id-icon"
+                                    className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'id' ? 'text-pink-500': 'text-gray-300'}`}
+                                />
+                            )}
+                            {payload.userList.total_count > 0 && payload.current_sort.order === 'desc' && (
+                                <FaArrowUp
+                                    title="Click to sort in ascending order"
+                                    data-testid="id-icon"
+                                    className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'id' ? 'text-pink-500': 'text-gray-300'}`}
+                                />
+                            )}
+                        </div>
                     </th>
                     <th
                     scope="col"
@@ -82,22 +80,20 @@ const Table = ({payload}: ResultProps) => {
                     >
                     <div onClick={(e) => handleSort(e, 'login', 'object')} data-testid="login-col" className="flex justify-start space-x-1  cursor-pointer">
                         <span>Login</span>
-                        {
-                            payload.userList.total_count > 0 && payload.current_sort.order === 'asc' &&
+                        {payload.userList.total_count > 0 && payload.current_sort.order === 'asc' && (
                             <FaArrowDown
                                 title="Click to sort in descending order"
                                 data-testid="login-icon"
                                 className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'login' ? 'text-pink-500': 'text-gray-300'}`}
                             />
-                        }
-                        {
-                            payload.userList.total_count > 0 && payload.current_sort.order === 'desc' &&
-                            <FaArrowUp
-                            title="Click to sort in ascending order"
-                            data-testid="login-icon"
-                            className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'login' ? 'text-pink-500': 'text-gray-300'}`}
-                            />
-                        }
+                        )}
+                        { payload.userList.total_count > 0 && payload.current_sort.order === 'desc' && (
+                             <FaArrowUp
+                                title="Click to sort in ascending order"
+                                data-testid="login-icon"
+                                className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'login' ? 'text-pink-500': 'text-gray-300'}`}
+                             />
+                        )}
                     </div>
                     </th>
                     <th
@@ -106,22 +102,20 @@ const Table = ({payload}: ResultProps) => {
                     >
                     <div onClick={(e) => handleSort(e, 'type', 'object')} data-testid="type-col" className="flex justify-start space-x-1 cursor-pointer">
                         <span>Type</span>
-                        {
-                            payload.userList.total_count > 0 && payload.current_sort.order === 'asc'&&
-                            <FaArrowDown
-                            title="Click to sort in descending order"
-                            data-testid="type-icon"
-                            className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'type' ? 'text-pink-500': 'text-gray-300'}`}
-                            />
-                        }
-                        {
-                            payload.userList.total_count > 0 && payload.current_sort.order === 'desc' &&
-                            <FaArrowUp
-                            title="Click to sort in ascending order"
-                            data-testid="type-icon"
-                            className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'type' ? 'text-pink-500': 'text-gray-300'}`}
-                            />
-                        }
+                        { payload.userList.total_count > 0 && payload.current_sort.order === 'asc'&& (
+                              <FaArrowDown
+                                title="Click to sort in descending order"
+                                data-testid="type-icon"
+                                className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'type' ? 'text-pink-500': 'text-gray-300'}`}
+                              />
+                        )}
+                        { payload.userList.total_count > 0 && payload.current_sort.order === 'desc' && (
+                             <FaArrowUp
+                             title="Click to sort in ascending order"
+                             data-testid="type-icon"
+                             className={`mt-1.5 w-3 h-3 cursor-pointer ${payload.current_sort.key === 'type' ? 'text-pink-500': 'text-gray-300'}`}
+                             />
+                        )}
                     </div>
                     </th>
                     <th scope="col" className="p-4">
@@ -130,45 +124,46 @@ const Table = ({payload}: ResultProps) => {
                 </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                {payload?.userList?.items &&
+                { payload?.userList?.items && (
                     payload.userList.items.map((item: any, i: number) => (
-                    <tr
-                        key={item.id}
-                        data-testid="result-column"
-                        className="hover:bg-gray-100"
-                    >
-                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-left">
-                        {((payload.page * payload.per_page) - payload.per_page) + (i+1)}
-                        </td>
-                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-left">
-                        {item.id}
-                        </td>
-                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-left">
+                        <tr
+                            key={item.id}
+                            data-testid="result-column"
+                            className="hover:bg-gray-100"
+                        >
+                            <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-left">
+                            {((payload.page * payload.per_page) - payload.per_page) + (i+1)}
+                            </td>
+                            <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-left">
+                            {item.id}
+                            </td>
+                            <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-left">
+                                <a
+                                    href={item.avatar_url}
+                                    target="__black"
+                                    className="text-pink-500 hover:text-pink-700 hover:underline"
+                                >
+                                    {item.avatar_url}
+                                </a>
+                            </td>
+                            <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap text-left">
+                            {item.login}
+                            </td>
+                            <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-left">
+                            {item.type}
+                            </td>
+                            <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
                             <a
-                                href={item.avatar_url}
+                                href={item.html_url}
                                 target="__black"
                                 className="text-pink-500 hover:text-pink-700 hover:underline"
                             >
-                                {item.avatar_url}
+                                View
                             </a>
-                        </td>
-                        <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap text-left">
-                        {item.login}
-                        </td>
-                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-left">
-                        {item.type}
-                        </td>
-                        <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                        <a
-                            href={item.html_url}
-                            target="__black"
-                            className="text-pink-500 hover:text-pink-700 hover:underline"
-                        >
-                            View
-                        </a>
-                        </td>
-                    </tr>
-                    ))}
+                            </td>
+                        </tr>
+                    ))
+                )}
                 </tbody>
             </table>
             <p data-testid="sort-checker" className='absolute -mt-6 hidden'>{payload.current_sort.key}</p>
